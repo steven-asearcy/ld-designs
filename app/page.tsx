@@ -17,8 +17,8 @@ export default function Home() {
       {/* Subtle vignette effect */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_0%,_rgba(61,43,31,0.15)_100%)]" />
 
-      {/* Decorative corner flourishes */}
-      <div className="absolute top-8 left-8 w-24 h-24 opacity-40">
+      {/* Decorative corner flourishes - hidden on mobile */}
+      <div className="hidden md:block absolute top-8 left-8 w-24 h-24 opacity-40">
         <svg viewBox="0 0 100 100" className="w-full h-full text-[#8B4726]">
           <path
             d="M0 50 Q25 50 25 25 Q25 0 50 0 M0 50 Q0 25 25 25"
@@ -29,7 +29,7 @@ export default function Home() {
           <circle cx="50" cy="0" r="3" fill="currentColor" />
         </svg>
       </div>
-      <div className="absolute top-8 right-8 w-24 h-24 opacity-40 rotate-90">
+      <div className="hidden md:block absolute top-8 right-8 w-24 h-24 opacity-40 rotate-90">
         <svg viewBox="0 0 100 100" className="w-full h-full text-[#8B4726]">
           <path
             d="M0 50 Q25 50 25 25 Q25 0 50 0 M0 50 Q0 25 25 25"
@@ -40,7 +40,7 @@ export default function Home() {
           <circle cx="50" cy="0" r="3" fill="currentColor" />
         </svg>
       </div>
-      <div className="absolute bottom-8 left-8 w-24 h-24 opacity-40 -rotate-90">
+      <div className="hidden md:block absolute bottom-8 left-8 w-24 h-24 opacity-40 -rotate-90">
         <svg viewBox="0 0 100 100" className="w-full h-full text-[#8B4726]">
           <path
             d="M0 50 Q25 50 25 25 Q25 0 50 0 M0 50 Q0 25 25 25"
@@ -51,7 +51,7 @@ export default function Home() {
           <circle cx="50" cy="0" r="3" fill="currentColor" />
         </svg>
       </div>
-      <div className="absolute bottom-8 right-8 w-24 h-24 opacity-40 rotate-180">
+      <div className="hidden md:block absolute bottom-8 right-8 w-24 h-24 opacity-40 rotate-180">
         <svg viewBox="0 0 100 100" className="w-full h-full text-[#8B4726]">
           <path
             d="M0 50 Q25 50 25 25 Q25 0 50 0 M0 50 Q0 25 25 25"
