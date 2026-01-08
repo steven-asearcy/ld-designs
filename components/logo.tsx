@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 
 interface LogoProps {
   className?: string;
@@ -8,34 +8,92 @@ interface LogoProps {
   size?: "sm" | "md" | "lg";
 }
 
-export function Logo({ className = "", animated = false, size = "md" }: LogoProps) {
+const strokeVariants: Variants = {
+  hidden: { pathLength: 0, opacity: 0 },
+  visible: {
+    pathLength: 1,
+    opacity: 1,
+    transition: { duration: 1.5, ease: "easeInOut" as const },
+  },
+};
+
+const strokeVariantsDelayed: Variants = {
+  hidden: { pathLength: 0, opacity: 0 },
+  visible: {
+    pathLength: 1,
+    opacity: 1,
+    transition: { delay: 0.3, duration: 1.5, ease: "easeInOut" as const },
+  },
+};
+
+export function Logo({
+  className = "",
+  animated = false,
+  size = "md",
+}: LogoProps) {
   const sizes = {
     sm: "h-8 w-8",
     md: "h-12 w-12",
     lg: "h-20 w-20",
   };
 
-  const strokeVariants = {
-    hidden: { pathLength: 0, opacity: 0 },
-    visible: {
-      pathLength: 1,
-      opacity: 1,
-      transition: { duration: 1.5, ease: "easeInOut" },
-    },
-  };
+  if (animated) {
+    return (
+      <motion.svg
+        viewBox="0 0 100 100"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className={`${sizes[size]} ${className}`}
+        initial="hidden"
+        animate="visible"
+      >
+        {/* Background circle */}
+        <circle
+          cx="50"
+          cy="50"
+          r="46"
+          className="fill-stone-900 stroke-amber-500/30"
+          strokeWidth="2"
+        />
 
-  const Wrapper = animated ? motion.svg : "svg";
-  const Path = animated ? motion.path : "path";
+        {/* Stylized "L" */}
+        <motion.path
+          d="M32 28 L32 68 L52 68"
+          className="stroke-amber-500"
+          strokeWidth="6"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          fill="none"
+          variants={strokeVariants}
+        />
+
+        {/* Stylized "D" */}
+        <motion.path
+          d="M56 28 L56 68 M56 28 C76 28 76 68 56 68"
+          className="stroke-stone-100"
+          strokeWidth="6"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          fill="none"
+          variants={strokeVariantsDelayed}
+        />
+
+        {/* Paint splatter accent */}
+        <circle cx="72" cy="32" r="4" className="fill-amber-500" />
+        <circle cx="78" cy="38" r="2" className="fill-amber-400" />
+        <circle cx="75" cy="42" r="1.5" className="fill-amber-600" />
+      </motion.svg>
+    );
+  }
 
   return (
-    <Wrapper
+    <svg
       viewBox="0 0 100 100"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={`${sizes[size]} ${className}`}
-      {...(animated && { initial: "hidden", animate: "visible" })}
     >
-      {/* Background circle with denim texture feel */}
+      {/* Background circle */}
       <circle
         cx="50"
         cy="50"
@@ -44,36 +102,31 @@ export function Logo({ className = "", animated = false, size = "md" }: LogoProp
         strokeWidth="2"
       />
 
-      {/* Stylized "L" with paint brush stroke effect */}
-      <Path
+      {/* Stylized "L" */}
+      <path
         d="M32 28 L32 68 L52 68"
         className="stroke-amber-500"
         strokeWidth="6"
         strokeLinecap="round"
         strokeLinejoin="round"
         fill="none"
-        {...(animated && { variants: strokeVariants })}
       />
 
-      {/* Stylized "D" with artistic curve */}
-      <Path
+      {/* Stylized "D" */}
+      <path
         d="M56 28 L56 68 M56 28 C76 28 76 68 56 68"
         className="stroke-stone-100"
         strokeWidth="6"
         strokeLinecap="round"
         strokeLinejoin="round"
         fill="none"
-        {...(animated && {
-          variants: strokeVariants,
-          transition: { delay: 0.3, duration: 1.5 },
-        })}
       />
 
       {/* Paint splatter accent */}
       <circle cx="72" cy="32" r="4" className="fill-amber-500" />
       <circle cx="78" cy="38" r="2" className="fill-amber-400" />
       <circle cx="75" cy="42" r="1.5" className="fill-amber-600" />
-    </Wrapper>
+    </svg>
   );
 }
 
@@ -110,4 +163,3 @@ export function LogoMark({ className = "" }: { className?: string }) {
     </svg>
   );
 }
-
