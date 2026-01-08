@@ -1,9 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Paintbrush } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { Logo } from "@/components/logo";
 
 export default function Home() {
   return (
@@ -21,16 +21,14 @@ export default function Home() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="max-w-3xl"
         >
-          {/* Icon */}
+          {/* Logo */}
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
             className="mb-8 flex justify-center"
           >
-            <div className="rounded-full bg-amber-500/10 p-4 ring-1 ring-amber-500/20">
-              <Paintbrush className="h-8 w-8 text-amber-400" />
-        </div>
+            <Logo size="lg" animated />
           </motion.div>
 
           {/* Heading */}

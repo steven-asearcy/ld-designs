@@ -1,9 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
-import { Menu, X, Paintbrush } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { Menu } from "lucide-react";
+import { LogoMark } from "@/components/logo";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -24,10 +23,10 @@ export function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-stone-800/50 bg-stone-950/80 backdrop-blur-md">
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 group">
-          <Paintbrush className="h-5 w-5 text-amber-500 transition-transform group-hover:rotate-12" />
+        <Link href="/" className="flex items-center gap-3 group">
+          <LogoMark className="h-6 w-10 text-stone-100 transition-transform group-hover:scale-105" />
           <span className="font-serif text-xl font-medium text-stone-100">
-            Lisa Dinkins Designs
+            LD Designs
           </span>
         </Link>
 
@@ -61,7 +60,7 @@ export function Header() {
             className="w-full border-stone-800 bg-stone-950 sm:max-w-sm"
           >
             <div className="flex flex-col gap-6 pt-8">
-              {navItems.map((item, index) => (
+              {navItems.map((item) => (
                 <SheetClose asChild key={item.href}>
                   <Link
                     href={item.href}
@@ -78,4 +77,3 @@ export function Header() {
     </header>
   );
 }
-

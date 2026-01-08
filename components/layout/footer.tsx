@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Instagram, Mail, Paintbrush } from "lucide-react";
+import { Instagram, Mail } from "lucide-react";
+import { LogoMark } from "@/components/logo";
 
 export function Footer() {
   return (
@@ -7,10 +8,10 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-6 py-12">
         <div className="flex flex-col items-center gap-8 md:flex-row md:justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <Paintbrush className="h-5 w-5 text-amber-500" />
+          <Link href="/" className="flex items-center gap-3">
+            <LogoMark className="h-6 w-10 text-stone-100" />
             <span className="font-serif text-xl font-medium text-stone-100">
-              Lisa Dinkins Designs
+              LD Designs
             </span>
           </Link>
 
