@@ -128,12 +128,22 @@ export default function Home() {
             every brushstroke is infused with the spirit of the Southwest.
           </motion.p>
 
+          {/* Coming soon notice */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.0, duration: 0.8 }}
+            className="mt-8 text-xs uppercase tracking-[0.25em] text-[#6B5A4A]"
+          >
+            Full site coming soon
+          </motion.p>
+
           {/* CTA Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.1, duration: 0.8 }}
-            className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center"
+            transition={{ delay: 1.2, duration: 0.8 }}
+            className="mt-6 flex flex-col gap-4 sm:flex-row sm:justify-center"
           >
             <Button
               variant="outline"
