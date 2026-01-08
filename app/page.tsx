@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Instagram, Mail, ChevronDown } from "lucide-react";
 
 export default function Home() {
   return (
@@ -64,26 +63,28 @@ export default function Home() {
         </svg>
       </div>
 
-      <main className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 text-center">
+      <main className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 text-center pb-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="max-w-4xl"
+          className="max-w-4xl -mt-8"
         >
-          {/* Logo */}
+          {/* Logo with spotlight backdrop */}
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="mb-8 flex justify-center"
+            className="mb-4 flex justify-center relative py-4"
           >
+            {/* Spotlight effect behind logo */}
+            <div className="absolute -inset-12 bg-[radial-gradient(ellipse_60%_50%_at_50%_50%,_rgba(245,237,224,0.25)_0%,_rgba(201,162,39,0.1)_30%,_transparent_70%)]" />
             <Image
               src="/logo.png"
               alt="Lisa Dinkins Designs"
               width={400}
               height={400}
-              className="w-64 sm:w-80 md:w-96 h-auto drop-shadow-2xl"
+              className="relative w-64 sm:w-80 md:w-96 h-auto brightness-110 contrast-105"
               priority
             />
           </motion.div>
@@ -93,7 +94,7 @@ export default function Home() {
             initial={{ scaleX: 0, opacity: 0 }}
             animate={{ scaleX: 1, opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className="flex items-center justify-center gap-4 mb-8"
+            className="flex items-center justify-center gap-4 mb-6"
           >
             <div className="h-px w-16 bg-gradient-to-r from-transparent to-[#C9A227]" />
             <svg viewBox="0 0 24 24" className="w-5 h-5 text-[#2A7B7B]">
@@ -132,7 +133,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.1, duration: 0.8 }}
-            className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center"
+            className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center"
           >
             <Button
               variant="outline"
@@ -149,46 +150,6 @@ export default function Home() {
             </Button>
           </motion.div>
 
-          {/* Social Links */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.3, duration: 0.8 }}
-            className="mt-12 flex justify-center gap-6"
-          >
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 rounded-full border border-[#5C4033] text-[#8B7B6B] hover:border-[#C9A227] hover:text-[#C9A227] transition-all duration-300"
-            >
-              <Instagram className="w-5 h-5" />
-              <span className="sr-only">Instagram</span>
-            </a>
-            <a
-              href="mailto:hello@lisadinkinsdesigns.com"
-              className="p-3 rounded-full border border-[#5C4033] text-[#8B7B6B] hover:border-[#2A7B7B] hover:text-[#2A7B7B] transition-all duration-300"
-            >
-              <Mail className="w-5 h-5" />
-              <span className="sr-only">Email</span>
-            </a>
-          </motion.div>
-        </motion.div>
-
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.8, duration: 1 }}
-          className="absolute bottom-8"
-        >
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-            className="text-[#5C4033]"
-          >
-            <ChevronDown className="w-6 h-6" />
-          </motion.div>
         </motion.div>
 
         {/* Copyright */}
@@ -196,7 +157,7 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5, duration: 1 }}
-          className="absolute bottom-2 text-xs text-[#4A3728] tracking-wider"
+          className="absolute bottom-6 text-xs text-[#5C4A3A] tracking-wider"
         >
           © {new Date().getFullYear()} Lisa Dinkins Designs
         </motion.div>
