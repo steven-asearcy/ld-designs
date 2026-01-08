@@ -10,7 +10,7 @@ export function Footer() {
           <Link href="/" className="flex items-center gap-2">
             <Paintbrush className="h-5 w-5 text-amber-500" />
             <span className="font-serif text-xl font-medium text-stone-100">
-              LD Designs
+              Lisa Dinkins Designs
             </span>
           </Link>
 
@@ -26,7 +26,7 @@ export function Footer() {
               <span className="sr-only">Instagram</span>
             </a>
             <a
-              href="mailto:hello@lddesigns.com"
+              href="mailto:hello@lisadinkinsdesigns.com"
               className="rounded-full p-2 text-stone-400 transition-colors hover:bg-stone-800 hover:text-amber-400"
             >
               <Mail className="h-5 w-5" />
@@ -38,7 +38,7 @@ export function Footer() {
         {/* Copyright */}
         <div className="mt-8 border-t border-stone-800/50 pt-8 text-center">
           <p className="text-sm text-stone-500">
-            © {new Date().getFullYear()} LD Designs. All rights reserved.
+            © {new Date().getFullYear()} Lisa Dinkins Designs. All rights reserved.
           </p>
         </div>
       </div>

@@ -27,7 +27,7 @@ export function Header() {
         <Link href="/" className="flex items-center gap-2 group">
           <Paintbrush className="h-5 w-5 text-amber-500 transition-transform group-hover:rotate-12" />
           <span className="font-serif text-xl font-medium text-stone-100">
-            LD Designs
+            Lisa Dinkins Designs
           </span>
         </Link>
 

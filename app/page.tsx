@@ -30,7 +30,7 @@ export default function Home() {
           >
             <div className="rounded-full bg-amber-500/10 p-4 ring-1 ring-amber-500/20">
               <Paintbrush className="h-8 w-8 text-amber-400" />
-            </div>
+        </div>
           </motion.div>
 
           {/* Heading */}
@@ -40,7 +40,7 @@ export default function Home() {
             transition={{ delay: 0.3, duration: 0.8 }}
             className="font-serif text-5xl font-light tracking-tight text-stone-100 sm:text-7xl"
           >
-            LD Designs
+            Lisa Dinkins Designs
           </motion.h1>
 
           {/* Tagline */}
@@ -98,7 +98,7 @@ export default function Home() {
           transition={{ delay: 1.5, duration: 1 }}
           className="absolute bottom-8 text-xs text-stone-600"
         >
-          © {new Date().getFullYear()} LD Designs. All rights reserved.
+          © {new Date().getFullYear()} Lisa Dinkins Designs. All rights reserved.
         </motion.div>
       </main>
     </div>

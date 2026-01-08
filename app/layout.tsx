@@ -14,7 +14,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "LD Designs | Hand-Painted Denim Art",
+  title: "Lisa Dinkins Designs | Hand-Painted Denim Art",
   description:
     "Unique, hand-painted designs on denim jackets. Wearable art that tells your story.",
 };
