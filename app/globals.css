@@ -7,7 +7,21 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-outfit);
-  --font-serif: var(--font-cormorant);
+  --font-serif: var(--font-libre);
+  --font-display: var(--font-rye);
+  
+  /* Southwestern Color Palette */
+  --color-rust: var(--rust);
+  --color-rust-dark: var(--rust-dark);
+  --color-teal: var(--teal);
+  --color-teal-dark: var(--teal-dark);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-cream: var(--cream);
+  --color-leather: var(--leather);
+  --color-bourbon: var(--bourbon);
+  --color-aged-wood: var(--aged-wood);
+  
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -48,71 +62,85 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  
+  /* Southwestern Palette - Aged & Vintage */
+  --rust: #8B4726;
+  --rust-dark: #6B3620;
+  --teal: #2A7B7B;
+  --teal-dark: #1E5F5F;
+  --gold: #C9A227;
+  --gold-light: #E8C547;
+  --cream: #F5EDE0;
+  --leather: #5C4033;
+  --bourbon: #4A3728;
+  --aged-wood: #3D2B1F;
+  
+  /* Map to shadcn variables */
+  --background: #F5EDE0;
+  --foreground: #3D2B1F;
+  --card: #FAF6F0;
+  --card-foreground: #3D2B1F;
+  --popover: #FAF6F0;
+  --popover-foreground: #3D2B1F;
+  --primary: #8B4726;
+  --primary-foreground: #F5EDE0;
+  --secondary: #2A7B7B;
+  --secondary-foreground: #F5EDE0;
+  --muted: #E8DFD0;
+  --muted-foreground: #6B5A4A;
+  --accent: #C9A227;
+  --accent-foreground: #3D2B1F;
+  --destructive: #B44D4D;
+  --border: #D4C4B0;
+  --input: #D4C4B0;
+  --ring: #8B4726;
+  --chart-1: #8B4726;
+  --chart-2: #2A7B7B;
+  --chart-3: #C9A227;
+  --chart-4: #5C4033;
+  --chart-5: #E8C547;
+  --sidebar: #3D2B1F;
+  --sidebar-foreground: #F5EDE0;
+  --sidebar-primary: #C9A227;
+  --sidebar-primary-foreground: #3D2B1F;
+  --sidebar-accent: #4A3728;
+  --sidebar-accent-foreground: #F5EDE0;
+  --sidebar-border: #5C4033;
+  --sidebar-ring: #8B4726;
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --background: #2A1F17;
+  --foreground: #F5EDE0;
+  --card: #3D2B1F;
+  --card-foreground: #F5EDE0;
+  --popover: #3D2B1F;
+  --popover-foreground: #F5EDE0;
+  --primary: #C9A227;
+  --primary-foreground: #2A1F17;
+  --secondary: #2A7B7B;
+  --secondary-foreground: #F5EDE0;
+  --muted: #4A3728;
+  --muted-foreground: #B8A898;
+  --accent: #8B4726;
+  --accent-foreground: #F5EDE0;
+  --destructive: #D45555;
+  --border: #5C4033;
+  --input: #5C4033;
+  --ring: #C9A227;
+  --chart-1: #C9A227;
+  --chart-2: #3AA8A8;
+  --chart-3: #B85A3A;
+  --chart-4: #8B7355;
+  --chart-5: #E8C547;
+  --sidebar: #2A1F17;
+  --sidebar-foreground: #F5EDE0;
+  --sidebar-primary: #C9A227;
+  --sidebar-primary-foreground: #2A1F17;
+  --sidebar-accent: #3D2B1F;
+  --sidebar-accent-foreground: #F5EDE0;
+  --sidebar-border: #4A3728;
+  --sidebar-ring: #C9A227;
 }
 
 @layer base {
@@ -122,4 +150,38 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Aged paper texture utility */
+.texture-aged {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.15'/%3E%3C/svg%3E");
+}
+
+/* Brushstroke border effect */
+.brushstroke-border {
+  position: relative;
+}
+
+.brushstroke-border::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    transparent 45%,
+    currentColor 45%,
+    currentColor 55%,
+    transparent 55%,
+    transparent 100%
+  );
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* Distressed text effect */
+.text-distressed {
+  text-shadow: 
+    1px 1px 0 rgba(139, 71, 38, 0.1),
+    -1px -1px 0 rgba(245, 237, 224, 0.1);
 }

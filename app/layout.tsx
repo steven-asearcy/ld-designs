@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Outfit } from "next/font/google";
+import { Libre_Baskerville, Outfit, Rye } from "next/font/google";
 import "./globals.css";
 
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
+const libreBaskerville = Libre_Baskerville({
+  variable: "--font-libre",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "700"],
 });
 
 const outfit = Outfit({
@@ -13,10 +13,16 @@ const outfit = Outfit({
   subsets: ["latin"],
 });
 
+const rye = Rye({
+  variable: "--font-rye",
+  subsets: ["latin"],
+  weight: ["400"],
+});
+
 export const metadata: Metadata = {
   title: "Lisa Dinkins Designs | Hand-Painted Denim Art",
   description:
-    "Unique, hand-painted designs on denim jackets. Wearable art that tells your story.",
+    "Unique, hand-painted designs on denim jackets. Wearable art with a southwestern soul.",
 };
 
 export default function RootLayout({
@@ -27,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${cormorant.variable} ${outfit.variable} font-sans antialiased`}
+        className={`${libreBaskerville.variable} ${outfit.variable} ${rye.variable} font-sans antialiased`}
       >
         {children}
       </body>
