@@ -15,6 +15,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { Turnstile, useTurnstileReset } from "@/components/ui/turnstile";
 import { contactSchema, type ContactFormData } from "@/lib/schemas/contact";
 
 const MESSAGE_MAX_LENGTH = 5000;
@@ -29,6 +30,7 @@ export function ContactDialog({ open, onOpenChange }: ContactDialogProps) {
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
   const [serverError, setServerError] = useState("");
   const nameInputRef = useRef<HTMLInputElement | null>(null);
+  const { setToken, clearToken, getToken } = useTurnstileReset();
 
   const {
     register,
@@ -47,7 +49,6 @@ export function ContactDialog({ open, onOpenChange }: ContactDialogProps) {
   // Focus the name field when the dialog opens
   useEffect(() => {
     if (open && status === "idle") {
-      // Slight delay to let the dialog animation start
       const timer = setTimeout(() => nameInputRef.current?.focus(), 100);
       return () => clearTimeout(timer);
     }
@@ -68,6 +69,7 @@ export function ContactDialog({ open, onOpenChange }: ContactDialogProps) {
       setTimeout(() => {
         setStatus("idle");
         setServerError("");
+        clearToken();
         reset();
       }, 200);
     }
@@ -77,6 +79,13 @@ export function ContactDialog({ open, onOpenChange }: ContactDialogProps) {
   async function onSubmit(data: ContactFormData) {
     setServerError("");
     setStatus("idle");
+
+    const turnstileToken = getToken();
+    if (!turnstileToken) {
+      setServerError("Please complete the verification check.");
+      setStatus("error");
+      return;
+    }
 
     const controller = new AbortController();
     const timeout = setTimeout(
@@ -88,7 +97,7 @@ export function ContactDialog({ open, onOpenChange }: ContactDialogProps) {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, turnstileToken }),
         signal: controller.signal,
       });
 
@@ -274,6 +283,15 @@ export function ContactDialog({ open, onOpenChange }: ContactDialogProps) {
                     {errors.message.message}
                   </p>
                 )}
+              </div>
+
+              {/* Turnstile verification */}
+              <div className="flex justify-center">
+                <Turnstile
+                  onVerify={setToken}
+                  onExpire={clearToken}
+                  theme="light"
+                />
               </div>
 
               {serverError && (

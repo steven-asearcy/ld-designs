@@ -20,6 +20,7 @@ const rye = Rye({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://lisadinkinsdesigns.com"),
   title: "Lisa Dinkins Designs | Hand-Painted Denim Art",
   description:
     "Unique, hand-painted designs on denim jackets. Wearable art with a southwestern soul.",

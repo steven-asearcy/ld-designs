@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { contactSchema } from "@/lib/schemas/contact";
+import { verifyTurnstileToken } from "@/lib/turnstile";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -41,6 +42,15 @@ export async function POST(request: Request) {
     if (body.website) {
       // Return success to avoid tipping off bots
       return NextResponse.json({ success: true });
+    }
+
+    // Verify Turnstile token
+    const turnstile = await verifyTurnstileToken(body.turnstileToken, ip);
+    if (!turnstile.success) {
+      return NextResponse.json(
+        { error: turnstile.error },
+        { status: 403 }
+      );
     }
 
     const result = contactSchema.safeParse(body);
