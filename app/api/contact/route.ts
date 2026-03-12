@@ -62,23 +62,24 @@ export async function POST(request: Request) {
       );
     }
 
-    const { name, email, message } = result.data;
+    const { name, email, phone, message } = result.data;
 
     // Sanitize: strip any HTML tags from user input
     const sanitize = (str: string) => str.replace(/<[^>]*>/g, "");
+
+    const emailLines = [
+      `Name: ${sanitize(name)}`,
+      `Email: ${email}`,
+    ];
+    if (phone) emailLines.push(`Phone: ${sanitize(phone)}`);
+    emailLines.push("", "Message:", sanitize(message));
 
     await resend.emails.send({
       from: "Lisa Dinkins Designs <noreply@lisadinkinsdesigns.com>",
       to: ["Support@lisadinkinsdesigns.com", "searcy.stevena@gmail.com"],
       replyTo: email,
       subject: `New Contact Form Message from ${sanitize(name)}`,
-      text: [
-        `Name: ${sanitize(name)}`,
-        `Email: ${email}`,
-        "",
-        "Message:",
-        sanitize(message),
-      ].join("\n"),
+      text: emailLines.join("\n"),
     });
 
     return NextResponse.json({ success: true });

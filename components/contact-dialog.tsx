@@ -209,6 +209,7 @@ export function ContactDialog({ open, onOpenChange }: ContactDialogProps) {
                 <Input
                   id="name"
                   placeholder="Your name"
+                  autoComplete="name"
                   aria-invalid={!!errors.name}
                   aria-describedby={errors.name ? "name-error" : undefined}
                   className="border-[#D4C4B0] bg-white/60 text-[#3D2B1F] placeholder:text-[#8B7B6B] focus-visible:border-[#8B4726] focus-visible:ring-[#8B4726]/20"
@@ -236,6 +237,7 @@ export function ContactDialog({ open, onOpenChange }: ContactDialogProps) {
                   id="email"
                   type="email"
                   placeholder="your@email.com"
+                  autoComplete="email"
                   aria-invalid={!!errors.email}
                   aria-describedby={errors.email ? "email-error" : undefined}
                   className="border-[#D4C4B0] bg-white/60 text-[#3D2B1F] placeholder:text-[#8B7B6B] focus-visible:border-[#8B4726] focus-visible:ring-[#8B4726]/20"
@@ -244,6 +246,30 @@ export function ContactDialog({ open, onOpenChange }: ContactDialogProps) {
                 {errors.email && (
                   <p id="email-error" className="text-xs text-[#B44D4D]" role="alert">
                     {errors.email.message}
+                  </p>
+                )}
+              </div>
+
+              <div className="space-y-2">
+                <Label
+                  htmlFor="phone"
+                  className="text-[#3D2B1F] font-semibold tracking-wide text-xs uppercase"
+                >
+                  Phone <span className="font-normal normal-case tracking-normal text-[#8B7B6B]">(optional)</span>
+                </Label>
+                <Input
+                  id="phone"
+                  type="tel"
+                  placeholder="(555) 123-4567"
+                  autoComplete="tel"
+                  aria-invalid={!!errors.phone}
+                  aria-describedby={errors.phone ? "phone-error" : undefined}
+                  className="border-[#D4C4B0] bg-white/60 text-[#3D2B1F] placeholder:text-[#8B7B6B] focus-visible:border-[#8B4726] focus-visible:ring-[#8B4726]/20"
+                  {...register("phone")}
+                />
+                {errors.phone && (
+                  <p id="phone-error" className="text-xs text-[#B44D4D]" role="alert">
+                    {errors.phone.message}
                   </p>
                 )}
               </div>

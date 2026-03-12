@@ -1,5 +1,7 @@
 import { z } from "zod";
 
+const phoneRegex = /^[+]?[\d\s\-().]{7,20}$/;
+
 export const contactSchema = z.object({
   name: z
     .string()
@@ -9,6 +11,12 @@ export const contactSchema = z.object({
     .string()
     .min(1, "Email is required")
     .email("Please enter a valid email address"),
+  phone: z
+    .string()
+    .max(20, "Phone number must be 20 characters or fewer")
+    .regex(phoneRegex, "Please enter a valid phone number")
+    .or(z.literal(""))
+    .optional(),
   message: z
     .string()
     .min(1, "Message is required")
