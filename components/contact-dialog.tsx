@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2, Send, CheckCircle2 } from "lucide-react";
 import {
@@ -15,6 +15,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { PhoneInput } from "@/components/ui/phone-input";
 import { Turnstile, useTurnstileReset } from "@/components/ui/turnstile";
 import { contactSchema, type ContactFormData } from "@/lib/schemas/contact";
 
@@ -38,6 +39,7 @@ export function ContactDialog({ open, onOpenChange }: ContactDialogProps) {
     reset,
     watch,
     setFocus,
+    control,
     formState: { errors, isSubmitting },
   } = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
@@ -210,6 +212,7 @@ export function ContactDialog({ open, onOpenChange }: ContactDialogProps) {
                   id="name"
                   placeholder="Your name"
                   autoComplete="name"
+                  maxLength={100}
                   aria-invalid={!!errors.name}
                   aria-describedby={errors.name ? "name-error" : undefined}
                   className="border-[#D4C4B0] bg-white/60 text-[#3D2B1F] placeholder:text-[#8B7B6B] focus-visible:border-[#8B4726] focus-visible:ring-[#8B4726]/20"
@@ -257,15 +260,20 @@ export function ContactDialog({ open, onOpenChange }: ContactDialogProps) {
                 >
                   Phone <span className="font-normal normal-case tracking-normal text-[#8B7B6B]">(optional)</span>
                 </Label>
-                <Input
-                  id="phone"
-                  type="tel"
-                  placeholder="(555) 123-4567"
-                  autoComplete="tel"
-                  aria-invalid={!!errors.phone}
-                  aria-describedby={errors.phone ? "phone-error" : undefined}
-                  className="border-[#D4C4B0] bg-white/60 text-[#3D2B1F] placeholder:text-[#8B7B6B] focus-visible:border-[#8B4726] focus-visible:ring-[#8B4726]/20"
-                  {...register("phone")}
+                <Controller
+                  name="phone"
+                  control={control}
+                  render={({ field }) => (
+                    <PhoneInput
+                      id="phone"
+                      placeholder="(555) 123-4567"
+                      value={field.value ?? ""}
+                      onChange={field.onChange}
+                      aria-invalid={!!errors.phone}
+                      aria-describedby={errors.phone ? "phone-error" : undefined}
+                      className="border-[#D4C4B0] bg-white/60 text-[#3D2B1F] placeholder:text-[#8B7B6B] focus-visible:border-[#8B4726] focus-visible:ring-[#8B4726]/20"
+                    />
+                  )}
                 />
                 {errors.phone && (
                   <p id="phone-error" className="text-xs text-[#B44D4D]" role="alert">

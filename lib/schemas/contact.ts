@@ -1,6 +1,5 @@
 import { z } from "zod";
-
-const phoneRegex = /^[+]?[\d\s\-().]{7,20}$/;
+import { isValidPhoneNumber } from "libphonenumber-js";
 
 export const contactSchema = z.object({
   name: z
@@ -13,8 +12,9 @@ export const contactSchema = z.object({
     .email("Please enter a valid email address"),
   phone: z
     .string()
-    .max(20, "Phone number must be 20 characters or fewer")
-    .regex(phoneRegex, "Please enter a valid phone number")
+    .refine((val) => !val || isValidPhoneNumber(val), {
+      message: "Please enter a valid phone number",
+    })
     .or(z.literal(""))
     .optional(),
   message: z
