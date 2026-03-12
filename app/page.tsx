@@ -1,11 +1,15 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { ContactDialog } from "@/components/contact-dialog";
 
 export default function Home() {
+  const [contactOpen, setContactOpen] = useState(false);
+
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#C4A87C]">
       {/* Wood grain texture background - positioned to show lighter area at top */}
@@ -83,22 +87,17 @@ export default function Home() {
             {/* CTA Buttons */}
             <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center">
               <Button
-                variant="outline"
-                className="border-2 border-[#8B4726] bg-white/50 text-[#8B4726] hover:bg-[#8B4726] hover:text-[#F5EDE0] transition-all duration-300 font-semibold tracking-wider uppercase text-sm px-8 py-5"
-                asChild
-              >
-                <Link href="#gallery">View Gallery</Link>
-              </Button>
-              <Button
+                onClick={() => setContactOpen(true)}
                 className="bg-[#2A7B7B] text-[#F5EDE0] hover:bg-[#1E5F5F] transition-all duration-300 font-semibold tracking-wider uppercase text-sm px-8 py-5 border-2 border-[#2A7B7B] hover:border-[#1E5F5F] shadow-lg"
-                asChild
               >
-                <Link href="#contact">Get in Touch</Link>
+                Get in Touch
               </Button>
             </div>
           </motion.div>
 
         </motion.div>
+
+        <ContactDialog open={contactOpen} onOpenChange={setContactOpen} />
 
         {/* Copyright */}
         <motion.div
